@@ -1,4 +1,9 @@
-package tp1.factory;
+package tp1.dao;
+
+import tp1.factory.ClienteDAO;
+import tp1.factory.FacturaDAO;
+import tp1.factory.FacturaProductoDAO;
+import tp1.factory.ProductoDAO;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;

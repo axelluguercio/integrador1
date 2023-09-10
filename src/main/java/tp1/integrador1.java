@@ -2,10 +2,13 @@ package tp1;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
+import tp1.dao.DAOFactory;
+import tp1.entidades.Cliente;
 import tp1.factory.*;
 
 import java.io.FileReader;
 import java.sql.Connection;
+import java.util.List;
 
 public class integrador1 {
 
@@ -29,12 +32,21 @@ public class integrador1 {
         CSVParser CSV_factura_producto = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/main/java/tp1/CSV/facturas-productos.csv"));
 
         // carga de datos por csv (1 sola vez)
-        //clientedao.insert(mysql);
-        //productodao.insert(mysql);
-        //facturadao.insert(mysql);
-        //factura_producto_dao.insert(mysql);
+        //clientedao.insert();
+        //productodao.insert();
+        //facturadao.insert();
+        //factura_producto_dao.insert();
 
         // sigue...
+
+        // Producto mas vendido
+        System.out.println(productodao.getProductoMasRecaudado());
+
+        // Lista ordenada de clientes por facturacion (Imprime pantalla)
+        List<Cliente> lista_clientes = clientedao.getClientesOrdenadosPorFacturacion();
+
+        // cierra conexion
+        db_dao.close();
 
     }
 }

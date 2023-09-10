@@ -1,26 +1,27 @@
 package tp1.factory;
 
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import tp1.interfaces.DAOI;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class FacturaDAO implements DAOI {
+    private Connection connection;
+
     public FacturaDAO(Connection con) throws SQLException {
-        this.createTable(con);
+        this.setConnection(con);
+        this.createTable();
     }
 
     @Override
-    public void insert(Connection con, CSVParser parser) throws IOException {
+    public void insert(CSVParser parser) throws SQLException {
         String insertQuery = "INSERT INTO factura (id_factura, id_cliente) VALUES (?, ?)";
 
-        try (PreparedStatement preparedStatement = con.prepareStatement(insertQuery)) {
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement(insertQuery)) {
             for (CSVRecord row : parser) {
 
                 int id_factura = Integer.parseInt(row.get("idFactura"));
@@ -31,25 +32,34 @@ public class FacturaDAO implements DAOI {
 
                 preparedStatement.executeUpdate();
 
-                con.commit();
+                this.connection.commit();
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
+            throw new SQLException(e);
         }
 
     }
 
     @Override
-    public void createTable(Connection con) throws SQLException {
+    public void setConnection(Connection con) throws SQLException {
+        if (con != null) {
+            this.connection = con;
+        } else {
+            throw new SQLException("La conexion dada no es valida");
+        }
+    }
+
+    @Override
+    public void createTable() throws SQLException {
         String createTableFactura = "CREATE TABLE IF NOT EXISTS factura (" +
                 "id_factura INT AUTO_INCREMENT PRIMARY KEY," +
                 "id_cliente INT," +
                 "FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)" +
                 ")";
 
-        con.prepareStatement(createTableFactura).execute();
-        con.commit();
+        this.connection.prepareStatement(createTableFactura).execute();
+        this.connection.commit();
     }
 
 }
