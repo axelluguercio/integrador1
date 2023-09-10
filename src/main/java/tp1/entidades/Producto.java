@@ -18,6 +18,12 @@ public class Producto {
         super();
     }
 
+    public Producto(int id, String nombre, double valor) {
+        this.id = id;
+        this.nombre = nombre;
+        this.valor = valor;
+    }
+
     public Producto(String nombre, double valor) {
         this.nombre = nombre;
         this.valor = valor;

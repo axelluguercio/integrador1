@@ -17,6 +17,11 @@ public class Cliente {
 
     public Cliente() {super();}
 
+    public Cliente(int id, String nombre, String email) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+    }
     public Cliente(String nombre, String email) {
         this.nombre = nombre;
         this.email = email;

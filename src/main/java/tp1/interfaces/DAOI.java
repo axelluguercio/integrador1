@@ -9,8 +9,10 @@ import java.sql.SQLException;
 
 public interface DAOI<T> {
 
-    void insert(Connection con, CSVParser parser) throws IOException, SQLException;
+    void setConnection(Connection con) throws SQLException;
+
+    void insert(CSVParser parser) throws SQLException;
 
 
-    void createTable(Connection con) throws SQLException;
+    void createTable() throws SQLException;
 }

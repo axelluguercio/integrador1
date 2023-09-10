@@ -1,4 +1,6 @@
-package tp1.factory;
+package tp1.dao;
+
+import tp1.factory.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
