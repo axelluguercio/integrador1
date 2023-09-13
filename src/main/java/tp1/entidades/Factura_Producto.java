@@ -1,6 +1,7 @@
 package tp1.entidades;
 
-import tp1.ignore.Factura;
+import tp1.entidades.Factura;
+import tp1.entidades.Producto;
 
 import javax.persistence.*;
 
