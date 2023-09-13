@@ -32,10 +32,10 @@ public class integrador1 {
         CSVParser CSV_factura_producto = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/main/java/tp1/CSV/facturas-productos.csv"));
 
         // carga de datos por csv (1 sola vez)
-        //clientedao.insert();
-        //productodao.insert();
-        //facturadao.insert();
-        //factura_producto_dao.insert();
+        //clientedao.insert(CSV_clientes);
+        //productodao.insert(CSV_productos );
+        //facturadao.insert(CSV_factura);
+        //factura_producto_dao.insert(CSV_factura_producto);
 
         // sigue...
 
