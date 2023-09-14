@@ -3,6 +3,7 @@ package tp1.factory;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import tp1.entidades.Cliente;
+import tp1.interfaces.DAOCliente;
 import tp1.interfaces.DAOI;
 
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteDAO implements DAOI {
+public class ClienteDAO implements DAOCliente {
 
     private Connection connection;
 

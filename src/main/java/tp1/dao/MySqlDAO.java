@@ -4,6 +4,9 @@ import tp1.factory.ClienteDAO;
 import tp1.factory.FacturaDAO;
 import tp1.factory.FacturaProductoDAO;
 import tp1.factory.ProductoDAO;
+import tp1.interfaces.DAOCliente;
+import tp1.interfaces.DAOI;
+import tp1.interfaces.DAOProducto;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -60,22 +63,22 @@ public class MySqlDAO extends DAOFactory {
     }
 
     @Override
-    public ClienteDAO getClienteDAO(Connection con) throws SQLException {
+    public DAOCliente getClienteDAO(Connection con) throws SQLException {
         return new ClienteDAO(con);
     }
 
     @Override
-    public ProductoDAO getProductoDAO(Connection con) throws SQLException {
+    public DAOProducto getProductoDAO(Connection con) throws SQLException {
         return new ProductoDAO(con);
     }
 
     @Override
-    public FacturaDAO getFacturaDAO(Connection con) throws SQLException {
+    public DAOI getFacturaDAO(Connection con) throws SQLException {
         return new FacturaDAO(con);
     }
 
     @Override
-    public FacturaProductoDAO getFacturaProductoDAO(Connection con) throws SQLException {
+    public DAOI getFacturaProductoDAO(Connection con) throws SQLException {
         return new FacturaProductoDAO(con);
     }
 }

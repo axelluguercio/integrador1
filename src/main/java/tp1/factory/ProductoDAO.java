@@ -4,6 +4,7 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import tp1.entidades.Producto;
 import tp1.interfaces.DAOI;
+import tp1.interfaces.DAOProducto;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ProductoDAO implements DAOI {
+public class ProductoDAO implements DAOProducto {
     private Connection connection;
 
     public ProductoDAO(Connection con) throws SQLException {
